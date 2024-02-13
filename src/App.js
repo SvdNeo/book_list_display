@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React from 'react';
+import { useState } from'react';
 
 function App() {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [isbn, setIsbn] = useState('');
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+      <h1 className="mt-5">Book Form</h1>
+      <form>
+        <div className="mb-3">
+          <label htmlFor="title" className="form-label">Title</label>
+          <input type="text" className="form-control" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="author" className="form-label">Author</label>
+          <input type="text" className="form-control" id="author" name="author" value={author} onChange={(e) => setAuthor(e.target.value)} required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="isbn" className="form-label">ISBN</label>
+          <input type="text" className="form-control" id="isbn" name="isbn" value={isbn} onChange={(e) => setIsbn(e.target.value)} required />
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </form>
+    </div>
+      <div className='display'></div>
     </div>
   );
 }
