@@ -4,14 +4,26 @@ import React from 'react';
 import { useState } from'react';
 
 function App() {
+  const[books, setBooks] = useState([]);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [isbn, setIsbn] = useState('');
+  
+
+  const addBook = (e) => {
+    e.preventDefault();
+    let book = { title: title, author: author, isbn: isbn };
+    setBooks([...books, book]);
+    setTitle('');
+    setAuthor('');
+    setIsbn('');
+  }
+  console.log(books)
   return (
     <div className="App">
       <div className="container">
       <h1 className="mt-5">Book Form</h1>
-      <form>
+      <form onSubmit={addBook}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">Title</label>
           <input type="text" className="form-control" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
